@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f8f4eb">
+  <meta name="description" content="Una pequeña sorpresa, una pregunta especial y una carta para ti.">
+  <title>Una pregunta para ti</title>
+  <link rel="icon" href="assets/heart.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="site-wrap">
+    <header class="toolbar">
+      <span class="brand"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20C9 17 2 12 2 7.5a5 5 0 0 1 10-1 5 5 0 0 1 10 1C22 12 15 17 12 20Z"/></svg>Una pregunta para ti</span>
+      <button id="edit" class="quiet-button" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 4 5 5M4 20l5-1L21 7a2 2 0 0 0-5-5L4 14z"/></svg><span>Personalizar</span></button>
+    </header>
+
+    <main id="paper" class="paper" aria-label="Una sorpresa para ti">
+      <svg id="ribbon-frame" class="ribbon-frame" aria-hidden="true"><path id="frame-navy"/><path id="frame-red"/></svg>
+      <svg class="bow" viewBox="0 0 280 300" aria-hidden="true">
+        <defs>
+          <linearGradient id="navy-ribbon" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#14283e"/><stop offset=".45" stop-color="#30435d"/><stop offset=".65" stop-color="#17293e"/><stop offset="1" stop-color="#0e1d30"/></linearGradient>
+          <linearGradient id="wine-ribbon" x1="0" x2="1"><stop stop-color="#651b2b"/><stop offset=".45" stop-color="#a14f5c"/><stop offset=".7" stop-color="#733042"/><stop offset="1" stop-color="#501d31"/></linearGradient>
+        </defs>
+        <path d="M129 108C117 145 94 158 87 193c-6 33 15 49 0 87l-20-22-23 6c21-36 9-48 24-82 14-33 36-59 42-79Z" fill="url(#wine-ribbon)"/>
+        <path d="M139 112c6 34 42 47 54 86l-31-9-18 18c-2-44-39-55-27-101Z" fill="url(#navy-ribbon)"/>
+        <path d="M120 106C86 106 51 54 34 69 18 83 23 104 14 128c31 11 72 9 106-9Z" fill="url(#navy-ribbon)" stroke="#112138" stroke-width="1.5"/>
+        <path d="M118 111c-36-10-64-24-82-19l-8 21c34-8 57 5 89 4Z" fill="url(#wine-ribbon)"/>
+        <path d="M128 106c6-31 19-64 44-84 8-7 16 16 27 24l25 26c-26 25-63 40-96 44Z" fill="url(#navy-ribbon)" stroke="#112138" stroke-width="1.5"/>
+        <path d="M132 110c24-24 41-56 57-65l22 22c-24 7-46 32-75 48Z" fill="url(#wine-ribbon)"/>
+        <path d="M137 108c29 0 48 17 57 38l31 25c-44 0-76-25-98-54Z" fill="url(#navy-ribbon)"/>
+        <path d="M117 99c10-7 18-4 26 2l-4 27c-11 3-21 0-29-5Z" fill="url(#wine-ribbon)" stroke="#562434" stroke-width="1.5"/>
+        <path d="m120 102 3 21m10-22-5 25" stroke="#d09594" opacity=".3" fill="none"/>
+      </svg>
+      <img src="assets/bouquet.webp" class="bouquet" alt="" aria-hidden="true" width="360" height="540">
+      <div id="stage" class="stage" aria-live="polite" aria-atomic="true"></div>
+      <div id="petals" class="petals" aria-hidden="true"></div>
+    </main>
+    <footer class="footer"><span>Hecho con mucho cariño</span><button id="restart" class="quiet-button" hidden>Volver al inicio <span aria-hidden="true">↺</span></button></footer>
+  </div>
+
+  <dialog id="editor" aria-labelledby="editor-title">
+    <form id="editor-form">
+      <div class="dialog-header"><div><p class="eyebrow">HAZLA TUYA</p><h2 id="editor-title">Tu sorpresa, tus palabras.</h2></div><button type="button" id="close-editor" class="close-button" aria-label="Cerrar">×</button></div>
+      <p class="editor-note">Cambia la pregunta y la carta. Tus cambios se guardan en este navegador.</p>
+      <label for="recipient">Nombre de la persona <span class="optional">(opcional)</span></label>
+      <input id="recipient" name="recipient" maxlength="60" placeholder="Para alguien muy especial…" autocomplete="off">
+      <label for="question">La pregunta</label>
+      <input id="question" name="question" maxlength="140" required>
+      <label for="letter-heading">Título de la carta</label>
+      <input id="letter-heading" name="heading" maxlength="80" required>
+      <label for="letter-text">La carta</label>
+      <textarea id="letter-text" name="letter" rows="9" maxlength="6000" required></textarea>
+      <label for="signature">Tu firma <span class="optional">(opcional)</span></label>
+      <input id="signature" name="signature" maxlength="80" placeholder="Con cariño…" autocomplete="off">
+      <div class="editor-actions"><button id="restore" type="button" class="text-button">Restaurar texto original</button><button type="submit" class="red-button">Guardar y ver</button></div>
+      <p id="editor-status" class="editor-note" role="status"></p>
+    </form>
+  </dialog>
+</body>
+</html>
